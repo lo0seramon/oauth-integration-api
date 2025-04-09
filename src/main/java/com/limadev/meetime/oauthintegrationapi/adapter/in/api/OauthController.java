@@ -1,6 +1,7 @@
 package com.limadev.meetime.oauthintegrationapi.adapter.in.api;
 
 import com.limadev.meetime.oauthintegrationapi.adapter.in.api.response.AuthorizeResponse;
+import com.limadev.meetime.oauthintegrationapi.application.business.port.in.ExchangeCodeForTokenUseCase;
 import com.limadev.meetime.oauthintegrationapi.application.business.port.in.GetAuthorizationUrlUseCase;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -11,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,17 +22,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class OauthController {
 
     private GetAuthorizationUrlUseCase getAuthorizationUrlUseCase;
+    private ExchangeCodeForTokenUseCase exchangeCodeForTokenUseCase;
 
     @ApiResponse(
             description = "Retorno de sucesso para a criação de url",
             responseCode = "200",
             content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = AuthorizeResponse.class))
     )
-    @GetMapping("v1/authorize")
+    @GetMapping("/v1/authorize")
     public ResponseEntity<AuthorizeResponse> getAuthorizationUrl() {
         return ResponseEntity.ok().body(AuthorizeResponse
                 .builder()
                 .authorizationUrl(getAuthorizationUrlUseCase.getAuthorizationUrl())
                 .build());
+    }
+
+    @GetMapping("/v1/callback")
+    public ResponseEntity<Void> handleCallback(@RequestParam("code") String authorizationCode) {
+        exchangeCodeForTokenUseCase.exchangeCodeForToken(authorizationCode);
+        return ResponseEntity.ok().build();
     }
 }

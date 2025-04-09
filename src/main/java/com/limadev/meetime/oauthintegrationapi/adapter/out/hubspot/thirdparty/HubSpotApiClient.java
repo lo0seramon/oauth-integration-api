@@ -12,8 +12,8 @@ import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VAL
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @FeignClient(
-        value = "HubSpot Api Client",
-        url = "${hubspot.api-base-ur}"
+        value = "hub-spot-api-client",
+        url = "${hubspot.api-base-uri}"
 )
 public interface HubSpotApiClient {
 

@@ -1,4 +1,4 @@
-package com.limadev.meetime.oauthintegrationapi.adapter.out.hubspot.config;
+package com.limadev.meetime.oauthintegrationapi.common.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,4 +15,7 @@ public class HubSpotApiCredentials {
 
     @Value("${hubspot.redirect-uri}")
     private String redirectUri;
+
+    @Value("${hubspot.scope}")
+    private String scope;
 }

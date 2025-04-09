@@ -1,6 +1,7 @@
 package com.limadev.meetime.oauthintegrationapi.adapter.in.api;
 
 import com.limadev.meetime.oauthintegrationapi.application.business.port.in.GetAuthorizationUrlUseCase;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/oauth")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class OauthController {
 
     private GetAuthorizationUrlUseCase getAuthorizationUrlUseCase;

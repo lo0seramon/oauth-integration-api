@@ -1,6 +1,6 @@
 package com.limadev.meetime.oauthintegrationapi.adapter.out.hubspot;
 
-import com.limadev.meetime.oauthintegrationapi.adapter.out.hubspot.config.HubSpotApiCredentials;
+import com.limadev.meetime.oauthintegrationapi.common.config.HubSpotApiCredentials;
 import com.limadev.meetime.oauthintegrationapi.adapter.out.hubspot.thirdparty.HubSpotApiClient;
 import com.limadev.meetime.oauthintegrationapi.adapter.out.hubspot.thirdparty.response.HubSpotApiTokenResponse;
 import com.limadev.meetime.oauthintegrationapi.application.business.port.out.AddContactInHubSpotPort;

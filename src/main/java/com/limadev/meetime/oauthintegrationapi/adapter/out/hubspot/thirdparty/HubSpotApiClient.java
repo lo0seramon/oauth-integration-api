@@ -24,7 +24,7 @@ public interface HubSpotApiClient {
                                               @RequestParam("redirect_uri") String redirectUri,
                                               @RequestParam("code") String code);
 
-        @PostMapping(value = "/crm/v3/objects/contact", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_FORM_URLENCODED_VALUE)
+        @PostMapping(value = "/crm/v3/objects/contacts", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
         void createContact(@RequestHeader("Authorization") String authorizationHeader,
                            @RequestBody HubSpotApiCreateContactRequest createContactRequest);
 }

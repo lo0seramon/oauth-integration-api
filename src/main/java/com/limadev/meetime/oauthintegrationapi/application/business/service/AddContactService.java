@@ -26,10 +26,10 @@ public class AddContactService implements AddContactUseCase {
 
         String authorizationHeader = generateAuthorizationHeader();
 
-        addContactInHubSpotPort.addContact(contactDomain);
+        addContactInHubSpotPort.addContact(authorizationHeader,contactDomain);
     }
 
     private String generateAuthorizationHeader() {
-        return "Bearer" + retrieveAccessTokenUseCase.retrieveAccessToken();
+        return "Bearer " + retrieveAccessTokenUseCase.retrieveAccessToken();
     }
 }

@@ -50,7 +50,7 @@ public class HubSpotApiAdapter implements GetAccessTokenPort, AddContactInHubSpo
     }
 
     @Override
-    public void addContact(ContactDomain contact) {
+    public void addContact(String authorizationHeader, ContactDomain contact) {
         log.info("[HubSpotApiAdapter][addContact] Adicionando contato [{}] ao CRM", contact.getEmail());
         try {
             hubSpotApiClient.createContact(authorizationHeader, contactMapper.toRequest(contact));
